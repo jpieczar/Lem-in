@@ -35,14 +35,20 @@ typedef struct			s_room
 	struct s_room		*next;
 }						t_room;
 
+t_room					*make(t_room **head);
+void					checkrooms(t_room *head);
+void					checkforend(t_path *paths);
+
+t_room					*findinmap(t_room **head, char *name);
+t_list					**makearr(int n);
+t_room					**linkrooms(t_room **head, char **arr);
+t_room					**makelinks(t_room **head, char *s);
+
+void					endorstart(t_room *head, char *name, char *c);
 void					makeroom(t_room **head, char *name, t_list *links);
 int						checkroom(t_room *head, char *name);
 t_room					*newroom(char *name, t_list *links);
 void					deletemap(t_room **head);
-void					endorstart(t_room *head, char *name, char *c);
-
-t_room					*findinmap(t_room **head, char *name);
-t_room					**linkrooms(t_room **head, char **arr);
 
 void					pushpath(t_path **head, t_path *new_r);
 t_path					*duppath(t_path *src);
@@ -53,29 +59,24 @@ void					deletepaths(t_path **head);
 int						checkpaths(t_path *head, t_room *room);
 t_path					*pathfinder(t_room *rooms);
 void					pathstepper(t_path **head);
-void					addstep(t_path **head, t_path *cur,
-							t_room *room);
+void					addstep(t_path **head, t_path *cur, t_room *room);
 
-t_room					**makelinks(t_room **head, char *s);
-t_room					*make(t_room **head);
-t_list					**makearr(int n);
-
-void					linkerror(void);
-void					starterror(void);
-void					roomerror(void);
-void					anterror(void);
-void					outputant(int ant, char *name);
+void					usedornot(t_path *r);
 void					deletelist(void *c);
 void					cleanpath(t_path *head);
-void					usedornot(t_path *r);
-void					makeants(t_room *head, char *ants);
-t_list					**pushant(t_list **arr, int n, t_path *paths);
-t_list					**addant(t_list **arr, int *loop,
-							int n, t_path *ref);
-void					outputants(t_path *path);
-int						possiblemove(t_path *path, int ants);
 
-void					checkrooms(t_room *head);
-void					checkforend(t_path *paths);
+int						possiblemove(t_path *path, int ants);
+void					makeants(t_room *head, char *ants);
+t_list					**addant(t_list **arr, int *loop, int n, t_path *ref);
+t_list					**pushant(t_list **arr, int n, t_path *paths);
+void					outputants(t_path *path);
+
+void					outputant(int ant, char *name);
+void					starterror(void);
+void					linkerror(void);
+void					roomerror(void);
+void					anterror(void);
+
+
 
 #endif

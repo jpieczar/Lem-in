@@ -114,7 +114,6 @@ int		main()
 	head = make(&head);
 	checkrooms(head);
 	makeants(head, ants);
-	// End of input
 	ft_putendl("");
 	paths = pathfinder(head);
 	checkforend(paths);
@@ -122,7 +121,6 @@ int		main()
 		ft_putendl("Error.");
 	cleanpath(paths);
 	outputants(paths);
-	// Memory freeing
 	deletemap(&head);
 	deletepaths(&paths);
 	free(ants);

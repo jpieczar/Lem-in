@@ -34,5 +34,7 @@ int	ft_atoi(const char *str)
 		res = ((res * 10) + (str[i] - 48));
 		i++;
 	}
+	if (res * mul > 2147483647 && res * mul < -2147483647)
+		return (0);
 	return (res * mul);
 }

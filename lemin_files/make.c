@@ -66,6 +66,7 @@ t_room	**makelinks(t_room **head, char *s)
 		arr = ft_strsplit(s, '-');
 		head = linkrooms(head, arr);
 		ft_freedub(arr);
+		
 	}
 	while (get_next_line(0, &str) > 0)
 	{

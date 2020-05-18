@@ -37,10 +37,11 @@ int		possiblemove(t_path *path, int ants)
 	return (loop);
 }
 
+
 void	makeants(t_room *head, char *ants)
 {
 	long long	n;
-	t_room		*ptr;
+	t_room		*ptr; 
 
 	ptr = head;
 	while (ptr && !ptr->s)
@@ -49,14 +50,20 @@ void	makeants(t_room *head, char *ants)
 		starterror();
 	if (ft_isnumber(ants))
 	{
-		n = ft_atoi(ants);
-		if (n > 0 && n < 2147483647)
-			ptr->ants = n;
-		else
-		{
-			ft_putendl("Enter a proper number of ants.");
-			exit(0);
-		}
+		if((n = ft_atoi(ants))){
+      if (n > 0 && n < 2147483647)
+			  ptr->ants = n;
+      else
+      {
+        ft_putendl("Enter a proper number of ants.");
+        exit(0);
+      }
+    }
+    else
+    {
+      ft_putendl("Enter a proper number of ants.");
+      exit(0);
+    }
 	}
 	else
 		anterror();
